@@ -3,7 +3,7 @@
 
 ![Angular CI](https://github.com/amrani95/Ionic-tp2/workflows/Angular%20CI/badge.svg)
 
-###Aymane AMRANI 
+### Aymane AMRANI 
 
-####Dev Web M1
+#### Dev Web M1
 
