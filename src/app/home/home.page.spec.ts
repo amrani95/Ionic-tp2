@@ -20,5 +20,14 @@ describe('HomePage', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(component.title).toBeUndefined();
+  });
+  it('change title', () => {
+    component.title = 'my title';
+    expect(component.title).toBe('my title');
+  });
+  it('update title', () => {
+    component.updateTitle();
+    expect(component.title).toBe('my new title');
   });
 });
