@@ -7,3 +7,7 @@
 
 #### Dev Web M1
 
+- CI :white_check_mark:
+    - Build :white_check_mark:
+    - Units Tests :white_check_mark:
+    - Readme with Github Actions Badges :white_check_mark:
