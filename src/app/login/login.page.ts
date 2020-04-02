@@ -23,7 +23,7 @@ error: string
     this.error = null;
     this.loading = true;
     this.loginService.login(this.id, this.mdp)
-    .subscribe(users => this.user = users,
+    .subscribe(user => this.user = user,
         error => {
           this.error = error;
           this.loading = false;
