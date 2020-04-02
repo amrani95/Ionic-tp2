@@ -11,20 +11,25 @@ import iUser from '../models/iUser';
 export class LoginPage implements OnInit {
 id = '';
 mdp = '';
-user: iUser;
-loanding = false;
+user: User;
+loading = false;
+error: string
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
   }
 
   login() {
-    this.loanding = true;
-    this.loginService.login(this.id, this.mdp).
-   subscribe( users => {
-     this.user = users[0];
-     this.loanding = false;
-   });
+    this.error = null;
+    this.loading = true;
+    this.loginService.login(this.id, this.mdp)
+    .subscribe(users => this.user = users,
+        error => {
+          this.error = error;
+          this.loading = false;
+        }, () => {
+          this.loading = false;
+        });
   }
 
 }

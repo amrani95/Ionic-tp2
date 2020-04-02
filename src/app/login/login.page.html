@@ -10,4 +10,7 @@
   </ion-item>
   <ion-button [disabled]="mdp.length < 4 || id.length < 4" color="primary" (click)="login()">Login</ion-button>
   </div>
+  <span *ngIf="error"> Une erreur est survenue : {{error}} </span>
+  <span *ngIf="loading"> Chargement en cours... </span>
+  <span *ngIf="user && !loading && !error"> Bienvenue {{user.nom}}</span>
 </ion-content>

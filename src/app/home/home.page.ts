@@ -14,11 +14,10 @@ export class HomePage {
 
   constructor(private loginService: LoginService) {}
 
-  updateTitle()
-  {
+  updateTitle() {
     this.title = 'My new title';
-    this.User = this.loginService.login('TOTO','pass');
-    console.log(this.User);
+    // this.User = this.loginService.login('TOTO', 'pass');
+   // console.log(this.User);
   }
   /*newmethodwithnotest()
   {
