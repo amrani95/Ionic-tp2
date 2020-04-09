@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {AlertController} from '@ionic/angular';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -10,10 +10,20 @@ export class HomePage {
   title: string;
 
 
-  constructor() {}
+  constructor(private alertController: AlertController) {}
 
-  updateTitle() {
-    this.title = 'My new title';
+  async fireAlert() {
+    // Alert Create
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: 'This is an alert message.',
+      buttons: ['OK']
+    });
+    alert.onDidDismiss().then(() => console.log('alerte masquée'))
+
+    // Alert show
+    await alert.present();
   }
 
 }
