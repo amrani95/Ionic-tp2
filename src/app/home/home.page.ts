@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {AlertController} from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -8,9 +10,17 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 })
 export class HomePage {
 
+  constructor(private camera: Camera, private alertController: AlertController, private geolocation: Geolocation) { }
+
   title: string;
   imgData: string;
-  constructor(private camera: Camera, private alertController: AlertController) { }
+  latitude: any = 0;
+  longitude: any = 0;
+  options = {
+    timeout: 10000,
+    enableHighAccuracy: true,
+    maximumAge: 3600
+  };
   async fireAlert() {
     // Alert Create
     const alert = await this.alertController.create({
@@ -19,7 +29,7 @@ export class HomePage {
       message: 'This is an alert message.',
       buttons: ['OK']
     });
-    alert.onDidDismiss().then(() => console.log('alerte masquée'))
+    alert.onDidDismiss().then(() => console.log('alerte masquée'));
 
     // Alert show
     await alert.present();
@@ -38,5 +48,15 @@ takePic() {
   }, (err) => {
     // Handle error
   });
+}
+takePos() {
+  this.geolocation.getCurrentPosition().then((resp) => {
+    this.latitude = resp.coords.latitude;
+    this.longitude = resp.coords.longitude;
+  }).catch((error) => {
+    console.log('Error getting location', error);
+  });
+
+
 }
 }
