@@ -18,6 +18,6 @@
     
 - Ionic:
     - [Ionic UI Components](https://ionicframework.com/docs/components) :white_check_mark:
-    - [Ionic Native](https://ionicframework.com/docs/native) *onglet Community*
+    - [Ionic Native](https://ionicframework.com/docs/native) :white_check_mark:
     - Android local Build
 
