@@ -11,7 +11,7 @@
     - Build :white_check_mark:
     - Units Tests :white_check_mark:
     - Readme with Github Actions Badges :white_check_mark:
-- Angular:
+- Angular :white_check_mark:
     - [Http Get Request](https://angular.io/guide/http) :white_check_mark:
     - Units Tests with HttpClientTestingModule :white_check_mark:
     - [Using Observable and Pipe Operator](https://www.learnrxjs.io/) :white_check_mark:
