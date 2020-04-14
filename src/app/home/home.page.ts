@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {AlertController} from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Geolocation, Coordinates} from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +14,10 @@ export class HomePage {
 
   title: string;
   imgData: string;
-  latitude: any = 0;
-  longitude: any = 0;
+  // latitude: any = 0;
+ // longitude: any = 0;
+  // position: Coordinates;
+  Pos: Array<{latitude: number, longitude: number}> = [];
   options = {
     timeout: 10000,
     enableHighAccuracy: true,
@@ -25,7 +27,7 @@ export class HomePage {
     // Alert Create
     const alert = await this.alertController.create({
       header: 'Alert',
-      subHeader: 'Subtitle',
+      subHeader: 'Petite Alert',
       message: 'This is an alert message.',
       buttons: ['OK']
     });
@@ -51,8 +53,8 @@ takePic() {
 }
 takePos() {
   this.geolocation.getCurrentPosition().then((resp) => {
-    this.latitude = resp.coords.latitude;
-    this.longitude = resp.coords.longitude;
+    // this.position = resp.coords;
+    this.Pos.push( {longitude: resp.coords.longitude, latitude: resp.coords.latitude} );
   }).catch((error) => {
     console.log('Error getting location', error);
   });
