@@ -66,8 +66,7 @@ Notif() {
   this.localNotifications.schedule({
     id: 1,
     text: 'Je crois que t\'as une notification ;)',
-    sound: 'file://sound.mp3',
-    data: { secret: 'key' }
+    sound: 'file://sound.mp3'
   });
 }
 
