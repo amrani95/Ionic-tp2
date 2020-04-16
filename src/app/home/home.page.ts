@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {AlertController} from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Geolocation, Coordinates} from '@ionic-native/geolocation/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +10,12 @@ import { Geolocation, Coordinates} from '@ionic-native/geolocation/ngx';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
-  constructor(private camera: Camera, private alertController: AlertController, private geolocation: Geolocation) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private camera: Camera, private alertController: AlertController, private geolocation: Geolocation, private localNotifications: LocalNotifications) { }
 
   title: string;
   imgData: string;
-  // latitude: any = 0;
- // longitude: any = 0;
-  // position: Coordinates;
+  position: [Coordinates];
   Pos: Array<{latitude: number, longitude: number}> = [];
   options = {
     timeout: 10000,
@@ -58,7 +57,17 @@ takePos() {
   }).catch((error) => {
     console.log('Error getting location', error);
   });
-
-
+  let watch = this.geolocation.watchPosition();
+  watch.subscribe((data) => {
+    this.position.push(data.coords);
+  });
+}
+Notif() {
+  this.localNotifications.schedule({
+    id: 1,
+    text: "Je crois que t'as une notification ;)",
+    sound: 'file://sound.mp3',
+    data: { secret: 'key' }
+  });
 }
 }
